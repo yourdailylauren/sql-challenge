@@ -1,0 +1,22 @@
+-- If 'dept_no' needs to be larger
+ALTER TABLE departments
+ALTER COLUMN dept_no TYPE VARCHAR(255);
+
+-- If 'emp_no' needs to be an integer with more room (unlikely since emp_no should be an integer)
+ALTER TABLE employees
+ALTER COLUMN emp_no TYPE BIGINT;
+
+-- Apply similar changes to 'dept_emp' if the 'dept_no' column is the issue
+ALTER TABLE dept_emp
+ALTER COLUMN dept_no TYPE VARCHAR(255);
+
+-- Apply similar changes to 'dept_emp' if the 'emp_no' column is the issue
+ALTER TABLE dept_emp
+ALTER COLUMN emp_no TYPE BIGINT;
+
+-- Don't forget to also update the 'dept_manager' and 'salaries' tables if they reference 'emp_no'
+ALTER TABLE dept_manager
+ALTER COLUMN emp_no TYPE BIGINT;
+
+ALTER TABLE salaries
+ALTER COLUMN emp_no TYPE BIGINT;
